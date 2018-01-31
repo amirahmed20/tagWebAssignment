@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { Http, HttpModule } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -7,10 +8,10 @@ import { CommonService } from "../shared/common.service";
 @Injectable()
 export class TourService {
     private data: any;
-    private str: string;
-    private _url:string="https://my-json-server.typicode.com/tagdevteam/AssignmentApi/tours";    
+    str: string = 'https://my-json-server.typicode.com/tagdevteam/AssignmentApi/';
+
     constructor(public http: Http,
-                public commonService: CommonService) {
+        public commonService: CommonService) {
     }
 
     private handleError(error: Response) {
@@ -19,8 +20,9 @@ export class TourService {
     }
 
     getAll() {
-        return this.http.get(this._url)
-                  .map((response)=>response.json());
-        
-    }    
+        return this.http.get(`${this.str}/tours`)
+            .map((response) => response.json());
+
+    }
 }
+

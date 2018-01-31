@@ -1,3 +1,55 @@
 <router-outlet></router-outlet>
 
 
+
+
+
+<div *ngFor='let tour of tours; let tourIndex = index '>
+    <h4>{{tour.Id}} - {{tour.Name}} </h4>
+
+    <a href="tours/Details/{{tour.Id}}">Tour details</a>
+
+
+    Artist: {{tour.ArtistName}}
+    <br/> {{tour.DateStart | date: 'dd/MM/yyyy'}}
+    <br/> {{tour.DateEnd | date: 'dd/MM/yyyy'}}
+    <br/> Travellers:
+    <span *ngFor='let traveller of tour.Travellers; let travellerIndex = index '>
+
+        <div class="chip">
+            <!-- {{traveller.Id}}  -->
+            {{traveller.Name}}
+        </div>
+
+    </span>
+    Trip:
+
+
+    <div *ngFor='let trip of tour.Trips;  let tripIndex = index '>
+        <h5>{{trip.Company}} </h5>
+        {{trip.Date}}
+        <br>{{trip.TimeDepart }}
+        <br> Travellers:
+        <span *ngFor='let travellerId of trip.Travellers; let travellerIDIndex = index '>
+
+            {{travellerId}}
+        </span>
+    </div>
+    <hr>
+</div>
+
+
+<div *ngFor='let tour of tours; let tourIndex = index ' class="panel">
+    <div class="row">
+
+        <div class="card-panel teal">
+            <span class="white-text">
+                <h3>{{tour.Id}} - {{tour.Name}} </h3>
+                <h5> Artist: {{tour.ArtistName}}</h5>
+                    From: {{tour.DateStart | date: 'dd/MM/yyyy'}} to {{tour.DateEnd | date: 'dd/MM/yyyy'}}
+            </span>
+
+        </div>
+    </div>
+
+</div>
